@@ -1,10 +1,10 @@
 function createCard(name, description, pictureUrl) {
     return `
-      <div class="card">
-        <img src="{pictureUrl}" class="card-img-top">
+    <div class="card shadow p-4 mb-3 bg-body rounded">
+        <img src="${pictureUrl}" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title">{name}</h5>
-          <p class="card-text">{description}</p>
+          <h5 class="card-title">${name}</h5>
+          <p class="card-text">${description}</p>
         </div>
       </div>
     `;
@@ -21,21 +21,30 @@ window.addEventListener('DOMContentLoaded', async () => {
         throw new Error("response not ok");
       } else {
         const data = await response.json();
-  
+        
+        let index = 0;
         for (let conference of data.conferences) {
           const detailUrl = `http://localhost:8000${conference.href}`;
           const detailResponse = await fetch(detailUrl);
           if (detailResponse.ok) {
             const details = await detailResponse.json();
-            const title = details.conference.title;
+            const title = details.conference.name;
             const description = details.conference.description;
             const pictureUrl = details.conference.location.picture_url;
             const html = createCard(title, description, pictureUrl);
-            console.log(html);
+            const column = document.querySelector(`#col-${index % 3}`);
+            column.innerHTML += html;
+            index +=1;
           }
         }
   
+      
       }
+    } catch (error) {
+      console.log("error occurred");
+    }
+  
+  });
 
 
 //   window.addEventListener('DOMContentLoaded', async () => {
