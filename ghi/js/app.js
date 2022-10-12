@@ -12,18 +12,24 @@ function createCard(name, description, pictureUrl, starts, ends, location) {
     `;
   }
 
+function alertComponent() {
+    return `<div class="alert alert-warning" role="alert">
+    Uh oh, an error occurred!
+  </div>
+  `
+}
+
 window.addEventListener('DOMContentLoaded', async () => {
 
     const url = 'http://localhost:8000/api/conferences/';
   
     try {
       const response = await fetch(url);
-  
+    
       if (!response.ok) {
         throw new Error("response not ok");
       } else {
         const data = await response.json();
-        
         let index = 0;
         for (let conference of data.conferences) {
           const detailUrl = `http://localhost:8000${conference.href}`;
@@ -47,9 +53,14 @@ window.addEventListener('DOMContentLoaded', async () => {
       }
     } catch (error) {
       console.log("error occurred");
+
+      const newHTML = alertComponent()
+      const errorOccurred = document.querySelector(".error-occurred")
+      errorOccurred.innerHTML = newHTML;
     }
   
   });
+
 
 
 //   window.addEventListener('DOMContentLoaded', async () => {
