@@ -49,7 +49,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "djwto"
 ]
+
+DJWTO_MODE = "TWO-COOKIES"
+
+DJWTO_ACCESS_TOKEN_LIFETIME = None
+
+CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
