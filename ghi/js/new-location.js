@@ -26,10 +26,10 @@ window.addEventListener('DOMContentLoaded', async () => {
       const formData = new FormData(formTag);
       const json = JSON.stringify(Object.fromEntries(formData));
   
-      const locationUrl = 'http://localhost:8000/api/locations/';
+    const locationUrl = 'http://localhost:8000/api/locations/';
     const fetchConfig = {
       method: "post",
-      body: json,
+      body: json.stringify(data),
       headers: {
         'Content-Type': 'application/json',
       },

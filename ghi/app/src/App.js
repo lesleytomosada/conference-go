@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
+import LocationForm from './LocationForm';
 import './App.css';
 import Nav from './nav';
+import AttendeesList from './AttendeesList';
 
 function App(props) {
   if (props.attendees === undefined){
@@ -8,26 +10,9 @@ function App(props) {
   }
   return (
     <><Nav />
-    <div className="container">
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Conference</th>
-          </tr>
-          </thead>
-        <tbody>
-          {props.attendees.map(attendee => {     
-            return(     
-            <tr key ={attendee.href}>
-            <td>{attendee.name}</td>
-            <td>{attendee.conference}</td>
-            </tr>);
-        })}
-
-         </tbody>
-      </table>
-    </div>
+    <div className="container"></div>
+    {/* <LocationForm /> */}
+    {/* <AttendeesList attendees = {props.attendees}/> */}
     </>
   );
 }
