@@ -3,6 +3,7 @@ import LocationForm from './LocationForm';
 import './App.css';
 import Nav from './nav';
 import AttendeesList from './AttendeesList';
+import ConferenceForm from './ConferenceForm';
 
 function App(props) {
   if (props.attendees === undefined){
@@ -13,6 +14,7 @@ function App(props) {
     <div className="container"></div>
     {/* <LocationForm /> */}
     {/* <AttendeesList attendees = {props.attendees}/> */}
+    <ConferenceForm/>
     </>
   );
 }
